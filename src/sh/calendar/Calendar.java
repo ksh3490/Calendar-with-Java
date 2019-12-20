@@ -13,21 +13,30 @@ public class Calendar {
 	}
 
 	public static void main(String[] args) {
-
-		Scanner input = new Scanner(System.in);
+		
+		String PROMPT = "cal> ";
 		Scanner monthInput = new Scanner(System.in);
 		Calendar cal = new Calendar();
-		System.out.println("반복 횟수를 입력하세요");
-		int num = input.nextInt();
 		
-		for (int i = 1; i <= num; i++) {
+		
+		int month = 0;
+		while (true) {
 			System.out.println("계산할 달을 입력하세요");
-			int month = monthInput.nextInt();
+			System.out.print(PROMPT);
+			month = monthInput.nextInt();
+			if(month == -1) {
+				break;
+			}
+			
+			if(month > 12) {
+				continue;
+			}
+			
 			System.out.printf("%d월은 %d일까지 있습니다\n", month, cal.daysOfMonth(month));
 		}
-		System.out.println("설정한 반복 횟수가 끝났습니다");
 
-		input.close();
+		System.out.println("Have a lovely day!");
+
 		monthInput.close();
 	}
 }
