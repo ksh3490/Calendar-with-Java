@@ -36,7 +36,7 @@ public class Calendar {
 		}
 
 		System.out.println("Have a lovely day!");
-
+		
 		monthInput.close();
 	}
 }
