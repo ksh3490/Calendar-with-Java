@@ -1,21 +1,18 @@
 package sh.calendar;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Calendar {
 
 	private static final int[] MONTH_DAYS = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
-	public void createLastArray(int[] arr, int numOfDays) {
+	public void createLastArray(String[] arr, int numOfDays) {
 		for (int i = 0; i < numOfDays; i++) {
 			int day = i + 29;
-			arr[i] = day;
+			arr[i] = Integer.toString(day);
 		}
 
-		String stringArr = Arrays.toString(arr);
-
-		String joinedString = String.join(" ", stringArr);
+		String joinedString = String.join(" ", arr);
 
 		System.out.println(joinedString);
 
@@ -61,12 +58,17 @@ public class Calendar {
 				System.out.println("올바른 값을 입력하세요");
 				continue;
 			}
+			
+			if (month < 1) {
+				System.out.println("올바른 값을 입력하세요");
+				continue;
+			}
 
 			int size = cal.daysOfMonth(month) - 28;
-			int[] intLastArray = new int[size];
+			String[] stringLastArray = new String[size];
 
 			cal.basicCalendarPrint();
-			cal.createLastArray(intLastArray, size);
+			cal.createLastArray(stringLastArray, size);
 
 		}
 
