@@ -4,16 +4,22 @@ import java.util.Scanner;
 
 public class Prompt {
 
-	private final static String PROMPT = "cal> ";
+	private final static String PROMPTYEAR = "YEAR> ";
+	private final static String PROMPTMONTH = "MONTH> ";
 
 	public void runPrompt() {
+		Scanner yearInput = new Scanner(System.in);
 		Scanner monthInput = new Scanner(System.in);
 		Calendar cal = new Calendar();
 
-		int month = 0;
+		int month = -1;
+		int year = -1;
 		while (true) {
+			System.out.println("출력하려는 연도를 입력하세요");
+			System.out.print(PROMPTYEAR);
+			year = yearInput.nextInt();
 			System.out.println("출력하려는 달을 입력하세요");
-			System.out.print(PROMPT);
+			System.out.print(PROMPTMONTH);
 			month = monthInput.nextInt();
 
 			if (month == -1) {
@@ -31,9 +37,13 @@ public class Prompt {
 				continue;
 			}
 
-			cal.printCalendar(month);
+			cal.printCalendar(year, month);
 
 		}
+		
+		yearInput.close();
+		monthInput.close();
+		
 	}
 
 	public static void main(String[] args) {
@@ -41,7 +51,6 @@ public class Prompt {
 		Prompt p = new Prompt();
 		p.runPrompt();
 
-//		monthInput.close();
 	}
 
 }
