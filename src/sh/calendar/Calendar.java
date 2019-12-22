@@ -1,7 +1,5 @@
 package sh.calendar;
 
-import java.util.Scanner;
-
 public class Calendar {
 
 	private static final int[] MONTH_DAYS = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
@@ -32,46 +30,4 @@ public class Calendar {
 		return MONTH_DAYS[month - 1];
 	}
 
-	public static void main(String[] args) {
-
-		String PROMPT = "cal> ";
-		Scanner monthInput = new Scanner(System.in);
-		Calendar cal = new Calendar();
-
-		int month = 0;
-		while (true) {
-			System.out.println("출력하려는 달을 입력하세요");
-			System.out.print(PROMPT);
-			month = monthInput.nextInt();
-
-			if (month == -1) {
-				System.out.println("달력 출력을 종료합니다");
-				break;
-			}
-
-			if (month == 2) {
-				cal.basicCalendarPrint();
-				continue;
-			}
-
-			if (month > 12) {
-				System.out.println("올바른 값을 입력하세요");
-				continue;
-			}
-			
-			if (month < 1) {
-				System.out.println("올바른 값을 입력하세요");
-				continue;
-			}
-
-			int size = cal.daysOfMonth(month) - 28;
-			String[] stringLastArray = new String[size];
-
-			cal.basicCalendarPrint();
-			cal.createLastArray(stringLastArray, size);
-
-		}
-
-		monthInput.close();
-	}
 }
