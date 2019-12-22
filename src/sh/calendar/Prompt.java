@@ -21,11 +21,6 @@ public class Prompt {
 				break;
 			}
 
-			if (month == 2) {
-				cal.basicCalendarPrint();
-				continue;
-			}
-
 			if (month > 12) {
 				System.out.println("올바른 값을 입력하세요");
 				continue;
@@ -36,11 +31,7 @@ public class Prompt {
 				continue;
 			}
 
-			int size = cal.daysOfMonth(month) - 28;
-			String[] stringLastArray = new String[size];
-
-			cal.basicCalendarPrint();
-			cal.createLastArray(stringLastArray, size);
+			cal.printCalendar(month);
 
 		}
 	}
