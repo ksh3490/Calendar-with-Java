@@ -40,10 +40,12 @@ public class Calendar {
 		int maxDay = daysOfMonth(year, month);
 		int dayDivider = DAY_DIVIDER[startDay];
 
+		// insert spaces
 		for (int i = 1; i <= startDay; i++) {
 			System.out.print("   ");
 		}
 
+		// print days of month
 		for (int i = 1; i <= maxDay; i++) {
 			System.out.printf("%3d", i);
 
