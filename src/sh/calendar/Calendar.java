@@ -51,23 +51,27 @@ public class Calendar {
 		System.out.println();
 		
 	}
-
+	
+	// Get Starting Weekday with counting
 	private int getStartDay(int year, int month, int day) {
 		int standardYear = 1970;
 		final int STANDARD_WEEKDAY = 3;  // 1970. 1. 1 Thursday
 		
 		int count = 0;
 		
+		// Count Days of Years
 		for (int i = standardYear; i < year; i++) {
 			int delta = isLeapYear(i) ? 366 : 365;
 			count += delta;
 		}
 		
+		// Count Days of Months
 		for (int i = 1; i < month; i++) {
 			int delta = daysOfMonth(year, i);
 			count += delta;
 		}
 		
+		// Count Days
 		count += day;
 		
 		int startDay = (count + STANDARD_WEEKDAY) % 7;
@@ -75,6 +79,7 @@ public class Calendar {
 		return startDay;
 	}
 
+	// Return the Number of Days
 	public int daysOfMonth(int year, int month) {
 
 		if (isLeapYear(year)) {
