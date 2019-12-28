@@ -55,7 +55,7 @@ public class Calendar {
 	// Get Starting Weekday with counting
 	private int getStartDay(int year, int month, int day) {
 		int standardYear = 1970;
-		final int STANDARD_WEEKDAY = 3;  // 1970. 1. 1 Thursday
+		final int STANDARD_WEEKDAY = 4;  // 1970. 1. 1 Thursday
 		
 		int count = 0;
 		
@@ -72,7 +72,7 @@ public class Calendar {
 		}
 		
 		// Count Days
-		count += day;
+		count += day - 1;
 		
 		int startDay = (count + STANDARD_WEEKDAY) % 7;
 		
