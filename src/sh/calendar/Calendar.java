@@ -1,10 +1,31 @@
 package sh.calendar;
 
+import java.util.Date;
+import java.util.HashMap;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 public class Calendar {
 
 	private static final int[] MONTH_DAYS = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 	private static final int[] LEAP_MONTH_DAYS = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	
+	private HashMap<Date, String> planMap;
 
+	public Calendar() {
+		planMap = new HashMap<Date, String>();
+	}
+	
+	public void registerPlan(String strDate, String plan) throws ParseException {
+		Date date = new SimpleDateFormat("yyyy-mm-dd").parse(strDate);
+		planMap.put(date, plan);
+	}
+	
+	public String searchPlan(String strDate) throws ParseException {
+		Date date = new SimpleDateFormat("yyyy-mm-dd").parse(strDate);
+		String plan = planMap.get(date);
+		return plan;
+	}
 
 	public boolean isLeapYear(int year) {
 
@@ -36,7 +57,7 @@ public class Calendar {
 		for (int i = 1; i <= count; i++) {
 			System.out.printf("%3d", i);
 		}
-		
+
 		System.out.println();
 
 		count++;
@@ -46,36 +67,36 @@ public class Calendar {
 				System.out.println();
 			}
 		}
-		
+
 		System.out.println();
 		System.out.println();
-		
+
 	}
-	
+
 	// Get Starting Weekday with counting
 	private int getStartDay(int year, int month, int day) {
 		int standardYear = 1970;
-		final int STANDARD_WEEKDAY = 4;  // 1970. 1. 1 Thursday
-		
+		final int STANDARD_WEEKDAY = 4; // 1970. 1. 1 Thursday
+
 		int count = 0;
-		
+
 		// Count Days of Years
 		for (int i = standardYear; i < year; i++) {
 			int delta = isLeapYear(i) ? 366 : 365;
 			count += delta;
 		}
-		
+
 		// Count Days of Months
 		for (int i = 1; i < month; i++) {
 			int delta = daysOfMonth(year, i);
 			count += delta;
 		}
-		
+
 		// Count Days
 		count += day - 1;
-		
+
 		int startDay = (count + STANDARD_WEEKDAY) % 7;
-		
+
 		return startDay;
 	}
 
