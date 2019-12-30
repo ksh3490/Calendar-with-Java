@@ -22,20 +22,27 @@ public class Prompt {
 		Scanner scanner = new Scanner(System.in);
 		Calendar cal = new Calendar();
 
+		boolean isLoop = true;
 		while (true) {
 			System.out.println("명령 (1, 2, 3, h, q)");
 			String cmd = scanner.next();
-			if (cmd.equals("1"))
+			switch(cmd) {
+			case "1":
 				cmdRegister(scanner, cal);
-			else if (cmd.equals("2"))
-				cmdSearch(scanner, cal);
-			else if (cmd.equals("3"))
-				cmdCal(scanner, cal);
-			else if (cmd.equals("h"))
-				cmdHelp();
-			else if (cmd.equals("q"))
 				break;
-
+			case "2":
+				cmdSearch(scanner, cal);
+				break;
+			case "3":
+				cmdCal(scanner, cal);
+				break;
+			case "h":
+				cmdHelp(scanner, cal);
+				break;
+			case "q":
+				isLoop = false;
+				break;
+			}
 		}
 
 		System.out.println("Bye~");
